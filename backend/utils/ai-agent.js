@@ -35,11 +35,8 @@ const ai = createAgent({
  */
 export async function summarizeDocumentAgent(text) {
     const prompt = `
-You are InsightAgent, a multimodal research assistant. Your task is to read the following document and provide a detailed summary. 
-Break the summary into bullet points with subheadings if possible. Also extract:
-1. Key topics
-2. Any mentioned authors, institutions, or references
-3. If research-related, the abstract and conclusions
+You are InsightAgent, a multimodal research assistant. Your task is to read the following document and provide a detailed summary in paragraph form only. 
+Do not use bullet points, subheadings, or any structured formatting—respond with well-written paragraphs only. Focus on summarizing the main ideas, key topics, and any important authors, institutions, or references mentioned. If the document is research-related, include the abstract and conclusions in paragraph form.
 
 Text:   
 """ 
@@ -53,6 +50,6 @@ ${text}
     }
 
     console.log('Summary generated successfully');
-    console.log('😘Response:', response.output);
-    return response;
+    console.log('😘Response:', response.output[0].content);
+    return response.output[0].content;
 }
