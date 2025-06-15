@@ -1,9 +1,11 @@
 import { createAgent, gemini } from "@inngest/agent-kit";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const ai = createAgent({
     model: gemini({
         model: 'gemini-1.5-flash',
-        apiKey: 'AIzaSyAyRPU7XsF_l-rjzMsnfqte9ooay0mCNL4',
+        apiKey: process.env.GEMINI_API_KEY,
     }),
     name: 'InsightAgent',
     system: `
