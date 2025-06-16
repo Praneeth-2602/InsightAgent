@@ -6,6 +6,7 @@ import fileUpload from 'express-fileupload';
 // import userRoutes from './routes/userRoutes.js';
 import fileRoutes from './routes/fileRoutes.js';
 import summaryRoutes from './routes/summaryRoutes.js';
+import questionRoutes from "./routes/questionRoutes.js";
 import { inngest } from './inngest/client.js';
 import { serve } from 'inngest/express';
 import { onFileUpload } from './inngest/functions/on-file-upload.js';
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/api/users', userRoutes);
 app.use('/api/files', fileRoutes);
 app.use('/api/summary', summaryRoutes);
+app.use("/api", questionRoutes);
 
 //inngest setup
 app.use(
